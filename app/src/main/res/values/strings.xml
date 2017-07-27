@@ -1,0 +1,1128 @@
+<resources>
+    <string name="app_name">SuiviActivite</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string-array name="lieux">
+        <item>Client</item>
+        <item>Munisys</item>
+        <item>Domicile</item>
+    </string-array>
+
+    <string-array name="natures">
+        <item>Projet</item>
+        <item>Support</item>
+        <item>Formation</item>
+        <item>Auto-Formation</item>
+        <item> PM</item>
+        <item> Support sur site</item>
+        <item>Congé</item>
+        <item>Maquette-POK</item>
+        <item>Administratif</item>
+        <item>Formation R</item>
+        <item>Formation D</item>
+        <item>R Externe</item>
+        <item>R Interne</item>
+        <item>Transport</item>
+        <item>Support à distance</item>
+
+    </string-array>
+
+    <string-array name="villes">
+        <item>Afourar</item>
+        <item>Agadir</item>
+        <item>Aghbala</item>
+        <item>Aghbalou</item>
+        <item>Agdz</item>
+        <item>Agourao</item>
+        <item>Aguelmous</item>
+        <item>Ahfir</item>
+        <item>Akka</item>
+        <item>Aklim</item>
+        <item>Aknoul</item>
+        <item>Ajdir</item>
+        <item>Ajdir</item>
+        <item>Al Aaroui</item>
+        <item>Al Hoceima</item>
+        <item>Alnif</item>
+        <item>Amalou Ighriben</item>
+        <item>Amizmiz</item>
+        <item>Aoufous</item>
+        <item>Aoulouz</item>
+        <item>Aourir</item>
+        <item>Arbaoua</item>
+        <item>Arfoud</item>
+        <item>Assa</item>
+        <item>Assahrij</item>
+        <item>Assilah</item>
+        <item>Azemmour</item>
+        <item>Azilal</item>
+        <item>Azrou</item>
+        <item>Bab Berred</item>
+        <item>Bab Taza</item>
+        <item>Bejaad</item>
+        <item>Ben Ahmed</item>
+        <item>Ben Guerir</item>
+        <item>Ben TaÔeb</item>
+        <item>Ben Yakhlef</item>
+        <item>Beni Mellal</item>
+        <item>Benslimane</item>
+        <item>Berkane</item>
+        <item>Berrechid</item>
+        <item>Bhalil</item>
+        <item>Biougra</item>
+        <item>Bni Ansar</item>
+        <item>Bni Bouayach</item>
+        <item>Bni Chiker</item>
+        <item>Bni Drar</item>
+        <item>Bni Hadifa</item>
+        <item>Bni Tadjite</item>
+        <item>Bouanane</item>
+        <item>Bouarfa</item>
+        <item>Boudnib</item>
+        <item>Bouguedra</item>
+        <item>Bouhdila</item>
+        <item>Bouizakarne</item>
+        <item>Boujdour</item>
+        <item>Boujniba</item>
+        <item>Boulanouare</item>
+        <item>Boulemane</item>
+        <item>Boumalne DadËs</item>
+        <item>Boumia</item>
+        <item>Bouskoura</item>
+        <item>Bouznika</item>
+        <item>Bradia</item>
+        <item>Brikcha</item>
+        <item>Bzou</item>
+        <item>Casablanca</item>
+        <item>Chefchaouen</item>
+        <item>Chichaoua</item>
+        <item>Dakhla</item>
+        <item>Dar Bni Karrich</item>
+        <item>Dar Chaoui</item>
+        <item>Dar El Kebdani </item>
+        <item>Dar Gueddari</item>
+        <item>Dar Oulad Zidouh</item>
+        <item>Dcheira El Jihadia</item>
+        <item>Debdou</item>
+        <item>Demnate</item>
+        <item>Deroua</item>
+        <item>Drargua</item>
+        <item>Driouch</item>
+        <item>Echemmaia</item>
+        <item>El Aioun Sidi Mellouk</item>
+        <item>El Borouj</item>
+        <item>El Gara</item>
+        <item>El Guerdane</item>
+        <item>El Hajeb</item>
+        <item>El Hanchane</item>
+        <item>El Jadida</item>
+        <item>El Kbab</item>
+        <item>El Kelaa des Mgouna</item>
+        <item>El Kelaa des Sraghna</item>
+        <item>El Ksiba</item>
+        <item>El Mansouria</item>
+        <item>El Marsa</item>
+        <item>El Menzel</item>
+        <item>El Ouatia</item>
+        <item>Erfoud</item>
+        <item>Errachidia</item>
+        <item>Er-Rich</item>
+        <item>Essaouira</item>
+        <item>Es-Semara</item>
+        <item>Fam El Hisn</item>
+        <item>Farkhana</item>
+        <item>Fes</item>
+        <item>Figuig</item>
+        <item>Fnideq</item>
+        <item>Foum Jamaa</item>
+        <item>Foum Zguid</item>
+        <item>Fquih Ben Salah</item>
+
+        <item>Ghmate</item>
+        <item>Goulmima</item>
+        <item>Gourrama</item>
+        <item>Guelmim</item>
+        <item>Guercif</item>
+        <item>Gueznaia</item>
+        <item>Guigou</item>
+        <item>Guisser</item>
+
+        <item>Had Bouhssoussen</item>
+        <item>Had Kourt</item>
+        <item>Had Oued Ifrane</item>
+        <item>Haj Kaddour</item>
+        <item>Hattane</item>
+        <item>Houara</item>
+        <item>Ifrane Atlas Saghir</item>
+        <item>Ifrane</item>
+        <item>Ighoud</item>
+        <item>Ihddaden</item>
+        <item>Imintanoute</item>
+        <item>Imouzzer Kandar</item>
+        <item>Imouzzer Marmoucha</item>
+        <item>Imzouren</item>
+        <item>Inezgane</item>
+        <item>Irherm</item>
+        <item>Issaguen</item>
+        <item>Itzer</item>
+        <item>Jaadar</item>
+        <item>Jamaat Shaim</item>
+        <item>Jebha</item>
+        <item>Jerada</item>
+        <item>Jorf</item>
+        <item>Jorf El Melha</item>
+        <item>Kalaat M Gouna</item>
+        <item>Karia</item>
+        <item>Karia Ba Mohamed</item>
+        <item>Kariat Arekmane</item>
+        <item>Kasba Tadla</item>
+        <item>Kassita</item>
+        <item>Kattara</item>
+        <item>Kehf Nsour</item>
+        <item>KÈnitra</item>
+        <item>Kerouna</item>
+        <item>Kerrouchen</item>
+        <item>Khemis Sahel</item>
+        <item>Khemisset</item>
+        <item>Khenifra</item>
+        <item>Khenichet</item>
+        <item>Khouribga</item>
+        <item>Ksar El Kebir</item>
+        <item>La‚ounate</item>
+        <item>Laakarta</item>
+        <item>Laattaouia</item>
+        <item>Laayoune</item>
+        <item>Lagouira</item>
+        <item>Lakhsas</item>
+        <item>Lahraouyine</item>
+        <item>Lalla Mimouna</item>
+        <item>Lalla Takarkoust</item>
+        <item>Larache</item>
+        <item>Lbir Jdid</item>
+        <item>Loualidia</item>
+        <item>Loulad</item>
+        <item>Lqliaa</item>
+        <item>Maaziz</item>
+        <item>Madagh</item>
+        <item>Marrakech</item>
+        <item>Martil</item>
+        <item>Massa</item>
+        <item>Matmata</item>
+        <item>M Diq</item>
+        <item>Mediouna</item>
+        <item>Mechra Bel Ksiri</item>
+        <item>Mehdya</item>
+        <item>MeknËs</item>
+        <item>M Haya</item>
+        <item>Midar</item>
+        <item>Midelt</item>
+        <item>Missour</item>
+        <item>Mohammedia</item>
+        <item>Moqrisset</item>
+        <item>Moulay Abdallah</item>
+        <item>Moulay Ali Cherif</item>
+        <item>Moulay Bouazza</item>
+        <item>Moulay Bousselham</item>
+        <item>Moulay Brahim</item>
+        <item>Moulay Driss Zerhoun</item>
+        <item>M Rirt</item>
+        <item>Nador</item>
+        <item>Naoma</item>
+        <item>Nouaceur</item>
+        <item>Oualidia</item>
+        <item>Ouaouizeght</item>
+        <item>Ouarzazate</item>
+        <item>Oued Amlil</item>
+        <item>Oued HeÔmer</item>
+        <item>Oued Laou</item>
+        <item>Oued Zem</item>
+        <item>Ouezzane</item>
+        <item>Ouislane</item>
+        <item>Oujda</item>
+        <item>Oulad Abbou</item>
+        <item>Oulad Amrane</item>
+        <item>Oulad Ayad</item>
+        <item>Oulad Berhil</item>
+        <item>Oulad Frej</item>
+        <item>Oulad Ghadbane</item>
+        <item>Oulad H Riz Sahel</item>
+        <item>Oulad M Barek</item>
+        <item>Oulad M Rah</item>
+        <item>Oulad SaÔd</item>
+        <item>Oulad Tayeb</item>
+        <item>Oulad Teoma</item>
+        <item>Oulad Yaoch</item>
+        <item>Oulad Zbaor</item>
+        <item>Oulmes</item>
+        <item>Ounagha</item>
+        <item>Outat El Haj</item>
+        <item>Rabat</item>
+        <item>Ras El Aon</item>
+        <item>Ras El Ma</item>
+        <item>Ribate El KheÔr</item>
+        <item>Rissani</item>
+        <item>Rommani</item>
+        <item>Sabaa Aiyoun</item>
+        <item>Safi</item>
+        <item>Saodia</item>
+        <item>SalÈ</item>
+        <item>Sebt El Maarif</item>
+        <item>Sebt Gzoula</item>
+        <item>Sebt Jahjouh</item>
+        <item>Sefrou</item>
+        <item>Selouane</item>
+        <item>Semara</item>
+        <item>Settat</item>
+        <item>Sid L Mokhtar</item>
+        <item>Sid Zouin</item>
+        <item>Sidi Abdallah Ghiat</item>
+        <item>Sidi Addi</item>
+        <item>Sidi Ahmed</item>
+        <item>Sidi Ali Ban Hamdouche</item>
+        <item>Sidi Allal El Bahraoui</item>
+        <item>Sidi Allal Tazi</item>
+        <item>Sidi Bennour</item>
+        <item>Sidi Bou Othm</item>
+        <item>Sidi Bouknadel</item>
+        <item>Sidi Bouzid</item>
+        <item>Sidi Kacem</item>
+        <item>Sidi Ifni</item>
+        <item>Sidi Jaber</item>
+        <item>Sidi Lyamani</item>
+        <item>Sidi Rahhal</item>
+        <item>Sidi Rahhal ChataÔ</item>
+        <item>Sidi Slimane</item>
+        <item>Sidi Slimane Echcharraa</item>
+        <item>Sidi SmaÔl</item>
+        <item>Sidi Taobi</item>
+        <item>Sidi Yahya El Gharb</item>
+        <item>Skhirate</item>
+        <item>Skhour Rehamna</item>
+        <item>Skoura</item>
+        <item>Smara</item>
+        <item>Smimou</item>
+        <item>Soualem</item>
+        <item>Souk El Arba‚ </item>
+        <item>Souk Sebt Oulad Nemma</item>
+        <item>Tabounte</item>
+        <item>Tafetachte</item>
+        <item>Tafraout</item>
+        <item>Tafrisset</item>
+        <item>Taghjijt</item>
+        <item>Tahannaout</item>
+        <item>Tahla</item>
+        <item>TaÔnaste</item>
+        <item>Talmest</item>
+        <item>Taliouine</item>
+        <item>Talsint</item>
+        <item>Tamallalt</item>
+        <item>Tamanar</item>
+        <item>Tamassint</item>
+        <item>Tameslouht</item>
+        <item>Tanger</item>
+        <item>Tan-Tan</item>
+        <item>Taounate</item>
+        <item>Tarfaya</item>
+        <item>Targuist</item>
+        <item>Taourirt</item>
+        <item>Taroudant</item>
+        <item>Tata</item>
+        <item>Taza</item>
+        <item>Taznakht</item>
+        <item>Temara</item>
+        <item>Temsia</item>
+        <item>Tendrara</item>
+        <item>Tetouan</item>
+        <item>Thar Es Souk</item>
+        <item>Tidass</item>
+        <item>Tiflet</item>
+        <item>Tighassaline</item>
+        <item>Tighza</item>
+        <item>Timahdite</item>
+        <item>Tinejdad</item>
+        <item>Tinghir</item>
+        <item>Tissa</item>
+        <item>Tit Mellil</item>
+        <item>Tizi Ouasli</item>
+        <item>Tiznit</item>
+        <item>Tiztoutine</item>
+        <item>Touima</item>
+        <item>Touissit</item>
+        <item>Toulal</item>
+        <item>Tounfite</item>
+        <item>Youssoufia</item>
+        <item>Zag</item>
+        <item>Zagora</item>
+        <item>Zaoda</item>
+        <item>ZaÔo</item>
+        <item>Zaouoat Bougrine</item>
+        <item>Zaouoat Cheikh</item>
+        <item>Zeghanghane</item>
+        <item>Zemamra</item>
+        <item>Zirara</item>
+        <item>Zoumi</item>
+        <item>Zrarda</item>
+    </string-array>
+
+    <string-array name="clients">
+        <item>118218 LE NUMERO MAROC</item>
+        <item>A&amp;O SYSTEMS</item>
+        <item>ACCINET</item>
+        <item>ACCOR GESTION MAROC</item>
+        <item>ACCYTIME</item>
+        <item>ACHARKI MOHAMED</item>
+        <item>ACHRAF BADRAOUI</item>
+        <item>ACISION PAKISTAN PRIVATE</item>
+        <item>ACWA POWER MAROC</item>
+        <item>ADIL MZOUZ</item>
+        <item>ADM DOUANE ET IMPOTS D</item>
+        <item>ADMINISTRATION PENITENTIAIRE ET LA REINSERTION</item>
+        <item>ADN</item>
+        <item>ADN DIRECTION REALISATION</item>
+        <item>ADVANCED CLINICAL</item>
+        <item>AEBDM</item>
+        <item>AFILAL EL KHAMSI</item>
+        <item>AFINASYS</item>
+        <item>AFIT</item>
+        <item>AFRICONSOM</item>
+        <item>AG DU PARTENARIAT POUR LE PROGRES</item>
+        <item>AGENCE DE DEVELOPPEMENT SOCIAL</item>
+        <item>AGENCE DE L\'ORIENTAL</item>
+        <item>AGENCE NATIONALE DE LA CONSERVATION FONCIERE DU CADASTRE ET DE LA CARTOGRAPHIE</item>
+        <item>AGENCE NATIONALE DE L\'ASSURANCE</item>
+        <item>AGENCE NATIONALE DE R…GLEMENTATION</item>
+        <item>AGENCE NATIONALE DES PORTS</item>
+        <item>AGENCE POUR L\'AMENAGEMENT BOUREGREG</item>
+        <item>AGMA LAHLOU TAZI</item>
+        <item>AGMA LAHLOU TAZI</item>
+        <item>AGOUMI JAOUAD</item>
+        <item>AGRICULTURE (MINISTERE)</item>
+        <item>AHVI</item>
+        <item>AIR FRANCE</item>
+        <item>AKHANCHI FATIMA</item>
+        <item>AL AKHAWAYN UNIVERSITY</item>
+        <item>AL BARID BANK</item>
+        <item>AL OMRANE</item>
+        <item>AL OMRANE FES</item>
+        <item>AL QUDRA MOROCCO</item>
+        <item>ALCOA FIXATIONS CASABLANCA</item>
+        <item>ALD AUTOMOTIVE</item>
+        <item>ALMAGEO</item>
+        <item>ALSHAYA MOROCCO S.A.S</item>
+        <item>ALTADIS MAROC</item>
+        <item>ALTITUDE TECHNOLOGY</item>
+        <item>AMADEUS MAROC</item>
+        <item>AMENDIS TANGER</item>
+        <item>AMENDIS TETOUAN</item>
+        <item>AMIRASSUR</item>
+        <item>ANAPEC</item>
+        <item>APM TERMINALS</item>
+        <item>ARCELORMITTAL INTERNATIONAL AFRICA</item>
+        <item>ARCHIRODON</item>
+        <item>ARCHITECTES ASSOCIES</item>
+        <item>ARCONIC FIXATIONS CASABLANCA</item>
+        <item>ARGAN INVEST</item>
+        <item>ARROW ECS</item>
+        <item>ARTEGUSTU</item>
+        <item>ASSIAQA CARD</item>
+        <item>ASSOCIATION AFKA</item>
+        <item>ASSOCIATION COMPLEXE SOCIAL</item>
+        <item>ASSOCIATION DAR TALIBA FETOUAKA</item>
+        <item>ASSURANCE AL CHAMAL</item>
+        <item>ASSURANCE ANAS</item>
+        <item>ASSURANCE AOUROUD</item>
+        <item>ASSURANCE BALAFREJ</item>
+        <item>ASSURANCE C.Q.RISK</item>
+        <item>ASSURANCE CAAS</item>
+        <item>ASSURANCE CHARIBA</item>
+        <item>ASSURANCE EL FADEL</item>
+        <item>ASSURANCE FAIZ</item>
+        <item>ASSURANCE FIKRI</item>
+        <item>ASSURANCE KOUBI</item>
+        <item>ASSURANCE LA CAPITALE</item>
+        <item>ASSURANCE L\'ENGAGEMENT</item>
+        <item>ASSURANCE TALLA</item>
+        <item>ASSURANCES AFIAC REGRAGUI</item>
+        <item>ASSURANCES AMCHACHTI</item>
+        <item>ASSURANCES ASSUNOR</item>
+        <item>ASSURANCES AVENIR DU SAHARA</item>
+        <item>ASSURANCES BENABDELLAH</item>
+        <item>ASSURANCES BENABDELLAH FES RMA</item>
+        <item>ASSURANCES BENEDICTION</item>
+        <item>ASSURANCES BENNIS</item>
+        <item>ASSURANCES BENNOUNA</item>
+        <item>ASSURANCES CASA EST</item>
+        <item>ASSURANCES CHETTO</item>
+        <item>ASSURANCES DAMANT</item>
+        <item>ASSURANCES EL BAHIA</item>
+        <item>ASSURANCES ELMARKAZ</item>
+        <item>ASSURANCES ES-SAADI</item>
+        <item>ASSURANCES GOUDAN</item>
+        <item>ASSURANCES HASKOURI</item>
+        <item>ASSURANCES IFRY</item>
+        <item>ASSURANCES LA FRATERNITE</item>
+        <item>ASSURANCES LAMOURI</item>
+        <item>ASSURANCES MAHRAZ</item>
+        <item>ASSURANCES PINTO</item>
+        <item>ASSURANCES RASSURA</item>
+        <item>ASSURANCES SABAH</item>
+        <item>ASSURANCES SOUFIANE</item>
+        <item>ASSURANCES TAAMIN\'COM</item>
+        <item>ASSURANCES TAOUFIK</item>
+        <item>ASSURANCES TARIK EL KHEIR</item>
+        <item>ASSURANCES ZAID</item>
+        <item>ASSUREMENT</item>
+        <item>AT COM</item>
+        <item>ATELIER GARAGE LOCASOM</item>
+        <item>ATENTO</item>
+        <item>ATLANTA</item>
+        <item>ATLANTIC BUSNESS INTERNATIONAL</item>
+        <item>ATLANTIC MICROFINANCE AFRICA</item>
+        <item>ATLANTIQUE TECHNOLOGIE S.A</item>
+        <item>ATLAS CATERING AIRLINES SERVICES</item>
+        <item>ATLAS HOSPITALITY MOROCCO SA</item>
+        <item>ATLAS ON LINE</item>
+        <item>ATOS ORIGIN MAROC</item>
+        <item>ATTIJARI BANK MAURITANIE</item>
+        <item>ATTIJARI INTERNATIONAL BANK</item>
+        <item>ATTIJARI INVEST</item>
+        <item>ATTIJARIWAFA BANK</item>
+        <item>ATTIJARIWAFA BANK FACTORING</item>
+        <item>AUTO HALL</item>
+        <item>AUTO NEJMA</item>
+        <item>AUTOMOTIVE MAINTENANCE SERVICE</item>
+        <item>AUTORITE MAROCAINE DU MARCHE DES CAPITAUX</item>
+        <item>AVANTAGE ASSURANCES</item>
+        <item>AXA ASSURANCE MAROC</item>
+        <item>AXA TECHNOLOGY SERVICES MAROC</item>
+        <item>AXENTIS GROUP</item>
+        <item>AXIM MAROC</item>
+        <item>AXO TOP MAROC</item>
+        <item>AXWAY SOFTWARE</item>
+        <item>AYOUB MESSASSE</item>
+        <item>AZZOUZI ESSAID</item>
+        <item>BAB AL BAHR</item>
+        <item>BAHSSI EL IDRISSI &amp; FILS</item>
+        <item>BAKIR ABDELILAH</item>
+        <item>BANK AL AMAL</item>
+        <item>BANK AL MAGHRIB</item>
+        <item>BANQUE CENTRALE POPULAIRE</item>
+        <item>BANQUE PARTICIPATION DU MAROC</item>
+        <item>BANQUE POPULAIRE DE CASA</item>
+        <item>BANQUE POPULAIRE DE LAAYOUNE</item>
+        <item>BANQUE POPULAIRE DE MEKNES</item>
+        <item>BANQUE POPULAIRE DE RABAT- KENITRA</item>
+        <item>BANQUE POPULAIRE DE TANGER -TETOUAN</item>
+        <item>BANQUE POPULAIRE D\'EL JADIDA-SAFI</item>
+        <item>BANQUE POPULAIRE D\'OUJDA</item>
+        <item>BANQUE POPULAIRE DU CENTRE-SUD</item>
+        <item>BANQUE POPULAIRE FES-TAZA</item>
+        <item>BANQUE POPULAIRE MAROCO-CENTRA</item>
+        <item>BANQUE POPULAIRE MARRAKECH-BENI  MELLAL</item>
+        <item>BANQUE POPULAIRE NADOR -AL HOCEIMA</item>
+        <item>BARAKAT NEZHA</item>
+        <item>BARID AL MAGHRIB</item>
+        <item>BELAOUCHI MOUNIR</item>
+        <item>BENCHAQROUNE MOTAA</item>
+        <item>BENMOUSSA</item>
+        <item>BERENGER</item>
+        <item>BERLIET  MAROC</item>
+        <item>BERRYANE ASSURANCES</item>
+        <item>BETOM INGENIERIE MAROC</item>
+        <item>BETOMAR</item>
+        <item>BETOMAR AGADIR</item>
+        <item>BETOMAR CARRIERE DE BENSLIMANE</item>
+        <item>BETOMAR CARRIERE DE CASABLANCA</item>
+        <item>BETOMAR LISSASFA</item>
+        <item>BISCATLAS</item>
+        <item>BLADE DIGITAL</item>
+        <item>BMCE ASSURANCES</item>
+        <item>BMCE BANK</item>
+        <item>BMCE CAPITAL</item>
+        <item>BMCE CAPITAL BOURSE</item>
+        <item>BMCE CAPITAL CONSEIL</item>
+        <item>BMCE CAPITAL GESTION</item>
+        <item>BMCE IMMOBILIER</item>
+        <item>BMCE TANGER OF SHORE</item>
+        <item>BMCI BANK</item>
+        <item>BOMBARDIER</item>
+        <item>BOUHNIK ASSURANCES</item>
+        <item>BOUHRIGA   ASSURANCES</item>
+        <item>BOUKHCHIBA MOHAMED</item>
+        <item>BOURSE  DE CASABLANCA</item>
+        <item>BP OUTSOURCING PROCESS</item>
+        <item>BP SHORE BACK OFFICE</item>
+        <item>BP SHORE RH</item>
+        <item>BP.REM</item>
+        <item>BPG (BANQUE POPULAIRE DU GHA</item>
+        <item>BRINKíS MAROC</item>
+        <item>BULL MAROC</item>
+        <item>BUNGE MAROC PHOSPHORE</item>
+        <item>BUSINESS CONNEXION INTERNATIONAL</item>
+        <item>CABINET CARDIOLOGIE ZNIBER LAYLA</item>
+        <item>CABINET JELLOUL</item>
+        <item>CABINET KHADDOUJ BRITEL</item>
+        <item>CABINET ROYAL</item>
+        <item>CABLIANCE MAROC</item>
+        <item>CACIOPEE</item>
+        <item>CADIC MAROC</item>
+        <item>CAISSE DE DEPOT ET DE GESTION</item>
+        <item>CAISSE MAROCAINE DES MARCHES S.A.</item>
+        <item>CAISSE MAROCAINE DES RETRAITES</item>
+        <item>CAISSE NATIONALE SECURITE SOCIALE</item>
+        <item>CAPGEMINI OUTSOURCING SERVICES</item>
+        <item>CAPGEMINI TECHNOLOGY SERVICES</item>
+        <item>CASABLANCA AMERICAIN SCHOOL</item>
+        <item>CASABLANCA FINANCE CITY AUTHORITY</item>
+        <item>CASABLANCA JEEMEO CARS</item>
+        <item>CASABLANCA PRESTATIONS SA</item>
+        <item>CASANEARSHORE</item>
+        <item>CBI</item>
+        <item>CDG CAPITAL</item>
+        <item>CDG CAPITAL PRIVATE EQUITY</item>
+        <item>CDG DEVELOPPEMENT</item>
+        <item>CEGELEC</item>
+        <item>CENTRALE DANONE</item>
+        <item>CENTRALE DANONE MEKNES</item>
+        <item>CENTRE D ENSACHAGE JORF LASFAR</item>
+        <item>CENTRE DE PATHOLOGIE SPECIALISEE</item>
+        <item>CENTRE DE TRANSFUSION SANGUINE</item>
+        <item>CFG BANK</item>
+        <item>CFG GROUP</item>
+        <item>CGI TECHNOLOGIES</item>
+        <item>CHAABI COURTAGE</item>
+        <item>CHAABI DOC NET</item>
+        <item>CHAABI LLD</item>
+        <item>CHAHIR ILHAM</item>
+        <item>CHALOKH MOHAMMED</item>
+        <item>CHEBIHI CHAKIB</item>
+        <item>CHEF DU GOUVERNEMENT</item>
+        <item>CIB OFFSHORE</item>
+        <item>CIMENT DU MAROC AIT BAHA</item>
+        <item>CIMENTS DU MAROC</item>
+        <item>CIMENTS DU MAROC SAFI</item>
+        <item>CISCO SYSTEMS MAROC</item>
+        <item>CITIBANK MAGHREB</item>
+        <item>CMPE</item>
+        <item>CNESTN</item>
+        <item>CNOPSv</item>
+        <item>CNR</item>
+        <item>CNRA/RCAR</item>
+        <item>COCA COLA EXPO CT</item>
+        <item>COFICAB MAROC</item>
+        <item>COLORADO</item>
+        <item>COMALAM</item>
+        <item>COMMUNE URBAINE DE  CASABLANCA</item>
+        <item>COMP CHERIF DE CHOCOLATRIE</item>
+        <item>COMPAGNIE ASSURANCE TSP</item>
+        <item>CONFORT ASSURANCES MIDELT</item>
+        <item>CONSEIL DE LA MAROCAINE A L\'ETRANGE</item>
+        <item>CONSULTING ENGENEERING DEVELOPEMENT</item>
+        <item>CORPORATE SOFTWARE</item>
+        <item>COTRADI</item>
+        <item>CREDIT AGRICOLE</item>
+        <item>CREDIT AGRICOLE DU MAROC</item>
+        <item>CREDIT DU MAROC</item>
+        <item>CREDIT IMMOBILIER ET HOTELIER</item>
+        <item>CROWN PACKAGING MAROC</item>
+        <item>CSDN</item>
+        <item>D&amp;B CREDIT BUREAU MAROC</item>
+        <item>DAEWOO E&amp;C</item>
+        <item>DAEWOO E&amp;C EL JADIDA</item>
+        <item>DAHIR YASSINE</item>
+        <item>DANONE BABY NUTRITION AFRICA</item>
+        <item>DELPHI AUTOMOTIVE SYSTEMS</item>
+        <item>DELPHI PACKARD KENITRA</item>
+        <item>DELPHI PACKARD MEKNES</item>
+        <item>DELPHI PACKARD TANGER</item>
+        <item>DHL</item>
+        <item>DIAMOND MOTORS</item>
+        <item>DIRECTION DE LA METEOROLOGIE NATIONALE</item>
+        <item>DISPHAT</item>
+        <item>DISWAY</item>
+        <item>DIVERSEY MAROC</item>
+        <item>DOCOMO INTER TOUCH MOROC</item>
+        <item>DOCUPRINT</item>
+        <item>DOHA FOOD</item>
+        <item>DOKA MAROC</item>
+        <item>DRIVE CONSULTING</item>
+        <item>DUPONT OCP OPERATIONS CONSULTI</item>
+        <item>DYAR AL MANSOUR</item>
+        <item>EAUX DE MARSEILLE</item>
+        <item>ECHCHERKI AMAL</item>
+        <item>ECOLE RIAD ZITOUNE</item>
+        <item>ECO-MEDIAS ECONOMISTE</item>
+        <item>ECONOCOM LOCATION MAROC</item>
+        <item>ECONOMIE ET FINANCES (MINISTERE)</item>
+        <item>ECOWELL</item>
+        <item>ECS INTERNATIONAL MAROC</item>
+        <item>EDITINFO</item>
+        <item>EL ARROUCHI EL MOSTAPHA</item>
+        <item>EL BARAKA KHALID</item>
+        <item>ELAN CERTIFICATION (DNV)</item>
+        <item>ELKHEYATI LATIFA</item>
+        <item>EMG/FAR</item>
+        <item>ENERGIE ET MINES (MINISTERE)</item>
+        <item>ENNAJI NADIA</item>
+        <item>ENTERPRISE SERVICES CDG</item>
+        <item>EQDOM</item>
+        <item>ERICSSON</item>
+        <item>ERRAMI MOSTAPHA</item>
+        <item>ESKER FRANCE</item>
+        <item>ESPACE ASSURANCE BOUHNIK</item>
+        <item>ETABLISSEMENT EL HARRATI</item>
+        <item>ETAFAT</item>
+        <item>ETIX EVERYWHERE MAROC</item>
+        <item>ETS MAX ASSIDON SES FILS ET CIE</item>
+        <item>ETS-ZITOUNI</item>
+        <item>EURAFRIC INFORMATION</item>
+        <item>EURO MAROC PHOSPHORE</item>
+        <item>EUROGATE TANGER SA</item>
+        <item>EVODIA</item>
+        <item>EXATEC ATM</item>
+        <item>EXCELDIS</item>
+        <item>EXCHANGE DATA INTERNATIONAL</item>
+        <item>EXP SERVICES MAROC</item>
+        <item>EXPANDI CREATION</item>
+        <item>EXPROM FM</item>
+        <item>F5 NETWORKS</item>
+        <item>FARAJ SIHAM</item>
+        <item>FASSI FIHRI YOUSSEF</item>
+        <item>FEDASO</item>
+        <item>FIRST ACTION MAROC</item>
+        <item>FNAM</item>
+        <item>FOCUS TEAM</item>
+        <item>FONDATION ATTAWFIQ</item>
+        <item>FONDATION BANQUE POPULAIRE</item>
+        <item>FONDATION BMCE</item>
+        <item>FONDATION MICRO-CREDIT</item>
+        <item>FONDATION MOHAMMED VI DE PROMOTION DES OEUVRES SOCIALES DE L\'EDUCATION ET DE FORMATION</item>
+        <item>FONDATION POUR LE</item>
+        <item>FONDEP</item>
+        <item>FONDS DíEQUIPEMENT COMMUNAL</item>
+        <item>FONDS D\'EQUIPEMENT COMMUNAL</item>
+        <item>FORCES ARMEES ROYALES</item>
+        <item>FORGES DE BASSE</item>
+        <item>FOUGHAL ASSURANCES</item>
+        <item>FROMAGERIE DES DOUKKALA</item>
+        <item>FST SETTAT</item>
+        <item>G,S,T,M</item>
+        <item>GALAXY ASSURANCE</item>
+        <item>GALAXY ASSURANCES (RMA)</item>
+        <item>GEFCO MAROC</item>
+        <item>GEMALTO</item>
+        <item>GENDARMERIE ROYAL</item>
+        <item>GIZ</item>
+        <item>GLOBAL NETWORK SYSTEMS</item>
+        <item>GROUP PROF BANQ MAROC</item>
+        <item>GROUPE 3 ARCHITECTES S.N.C</item>
+        <item>GROUPE ADDOHA</item>
+        <item>GROUPE BERRADA</item>
+        <item>GROUPE CMCP</item>
+        <item>GROUPE PREMIUM</item>
+        <item>GROUPE SCOLAIRE OSUI LOUIS MASSIGNON</item>
+        <item>GROUPELEC</item>
+        <item>GSIMT</item>
+        <item>HAD REDA</item>
+        <item>HASNAOUI ABDELFATAH</item>
+        <item>HASSANI ABEL HAMID</item>
+        <item>HD INFORMATQIUE</item>
+        <item>HERBZI FATIM ZAHRA</item>
+        <item>HEWLETT PACKARD ENTERPRISE</item>
+        <item>HEWLETT PACKARD ENTREPRISE</item>
+        <item>HEWLETT PACKARD EUROPE BV</item>
+        <item>HOLIDAY DRIVE INTERNATIONAL</item>
+        <item>HOPITAL CHEIKH KHALIFA IBN ZAID</item>
+        <item>HOTEL BOUREGREG</item>
+        <item>HOTEL IBIS MOUSSAFIR</item>
+        <item>HOTEL MANSOUR EDDAHBI</item>
+        <item>HOTEL ROYAL MANSOUR</item>
+        <item>HOTIX MAROC</item>
+        <item>HOUMAM ZAHIRA</item>
+        <item>HP CDG IT SERVICES</item>
+        <item>HP.GENEVE</item>
+        <item>HPS- CASABLANCA</item>
+        <item>HPS SWITCH</item>
+        <item>HUAWEI TECHNOLOGIES MOROCCO</item>
+        <item>IAM DIREC.REGI.DU GRAND CASA</item>
+        <item>IBERIA</item>
+        <item>IBIS PALMERAIE MARRAK</item>
+        <item>IBM MAROC</item>
+        <item>IBM WORLDTRADE CORPORATION</item>
+        <item>IBRACOL</item>
+        <item>ICOMAIL</item>
+        <item>ICOPRINT</item>
+        <item>ILYAS ZIADI</item>
+        <item>IMACID</item>
+        <item>IMPRIMERIE ADDOHA</item>
+        <item>INDO MAROC PHOSPHORE</item>
+        <item>INDRA SISTEMAS MAGREB</item>
+        <item>INDUSAHA</item>
+        <item>INDUSAHA LAAYOUNE</item>
+        <item>INFODISCOUNT</item>
+        <item>INGENIUS</item>
+        <item>INITIATIVE MAROCAINE DíAM…LIORATION</item>
+        <item>INPT</item>
+        <item>INRA</item>
+        <item>INSPECTION DE SERVICE DE SANTE</item>
+        <item>INSPECTION GENERALE DES FORCES AUXI</item>
+        <item>INST.NAT.RECHERCHE AGRONOM</item>
+        <item>INSTITUT DE PROMOTION SOCIO-EDUCA</item>
+        <item>INSTITUT MAROCAIN DE NORMALISATION</item>
+        <item>INSTITUT PASTEUR DU MAROC</item>
+        <item>INSTITUT ROYAL DES ETUDES STRATEGIQ</item>
+        <item>INSTITUT TAHER SEBTI</item>
+        <item>IPLUS</item>
+        <item>IRCAM</item>
+        <item>IRESEN</item>
+        <item>ITALGEN MAROC ENER CPS AIT BAH</item>
+        <item>J.M.INDUS</item>
+        <item>JAAFRIYA AHMED</item>
+        <item>JACOBS ENGINEERING SA</item>
+        <item>JARMOUNI LAILA</item>
+        <item>JEROME GATTEGNO</item>
+        <item>JOHNSON DIVERSEY MAROC</item>
+        <item>JORF FERTILISERS COMPANY II</item>
+        <item>JPC AUDIT</item>
+        <item>JUNIPER NETWORKS INTERNATIONAL</item>
+        <item>KACIM MUSTAPHA</item>
+        <item>KRAFT FOODS</item>
+        <item>LA CHAMBRE DES REPRESENTANTS</item>
+        <item>LA MAISON DIET D\'AGADIR</item>
+        <item>LA MAROCAINE VIE</item>
+        <item>LA SAMIR</item>
+        <item>LABORATOIRE PUBLIC D\'ESSAIS  D\'ETUD</item>
+        <item>LABORATOIRES PFIZER</item>
+        <item>LADIS</item>
+        <item>LAKHDAR ABDELGHNI</item>
+        <item>LARBI BELARBI</item>
+        <item>LARBI EL IDRISSI</item>
+        <item>LE COMPTOIR D\'ASSURANCE</item>
+        <item>LE PLASTIQUE</item>
+        <item>LEAR AUTOMOTIVE MOROCCO</item>
+        <item>LEAR AUTOMOTIVE MORROCO SAS</item>
+        <item>LENOVO PC HK LIMITED</item>
+        <item>LESIEUR  CRISTAL</item>
+        <item>LEXMARK INTERNATIONAL</item>
+        <item>LG SECURITE</item>
+        <item>L\'HEURE JOYEUSE</item>
+        <item>LIBRAIRIE DAR ALAMANE</item>
+        <item>LIDIDI DRISS</item>
+        <item>LIDIDI SAMIRA</item>
+        <item>L\'INSTANCE CENTRALE DE PREVENTION</item>
+        <item>LKHOUYAALI MUSTPHA</item>
+        <item>LOCASOM</item>
+        <item>L\'OREAL MAROC</item>
+        <item>LYCEE ABDELMALEK ESSAADI</item>
+        <item>LYDEC</item>
+        <item>M.ABDERRAHIM</item>
+        <item>M.DES FINANCES DIRT.IMPOTS</item>
+        <item>M.S.IN</item>
+        <item>M2M GROUP</item>
+        <item>MAESTRO DRYMIX</item>
+        <item>MAGHREB ARABE PRESSE</item>
+        <item>MAGHREB TITRISATION</item>
+        <item>MAGHREBAIL</item>
+        <item>MANSOURI HOUCINE</item>
+        <item>MAPHAR LABORATOIRE</item>
+        <item>MAR HANDLING</item>
+        <item>MAROC ASSISTANCE INTERNATIONALE</item>
+        <item>MAROC ASSURANCE</item>
+        <item>MAROC BUREAU</item>
+        <item>MAROC BUREAU RABAT</item>
+        <item>Maroc Climate &amp; Security</item>
+        <item>MAROC DESSERT INTERNATIONAL</item>
+        <item>MAROC LEASING</item>
+        <item>MAROC PHOSPHORE</item>
+        <item>MAROC PHOSPHORE EL JADIDA</item>
+        <item>MAROC PHOSPHORE SAFI</item>
+        <item>MAROC SERVICES INTERMEDIATIONS</item>
+        <item>MAROC SOIR</item>
+        <item>MAROC TELECOM</item>
+        <item>MAROC TELECOM</item>
+        <item>MAROC TOPO</item>
+        <item>MAROCAINE DES JEUX ET DES SPORTS</item>
+        <item>MAROCLEAR</item>
+        <item>MARRAKECH SHORE</item>
+        <item>MARSA MAROC</item>
+        <item>MAZARS MASNAOU</item>
+        <item>MED HUB</item>
+        <item>MEDI 1 TV</item>
+        <item>MEDIA FINANCE</item>
+        <item>MEDITELECOM</item>
+        <item>MEDZ</item>
+        <item>MEDZ SOURCING</item>
+        <item>MEETING POINT MOROCCO</item>
+        <item>MEHDIA ASSURANCE</item>
+        <item>MEKOUAR M\'HAMMED</item>
+        <item>MELINIUM CONCEPT</item>
+        <item>MESSAOUDI MED</item>
+        <item>MGPAP</item>
+        <item>MICRO HOUSE</item>
+        <item>MICROCHOIX MAROC</item>
+        <item>MICROSOFT</item>
+        <item>MINISTERE DE LA JEUNESSE ET SPORTS</item>
+        <item>MINISTERE DE LA JUSTICE</item>
+        <item>MINISTERE DE LA PECHE MARITIME</item>
+        <item>MINISTERE DE LA PREVISION ECONOM</item>
+        <item>MINISTERE DE LA SANTE</item>
+        <item>MINISTERE DE L\'ECONOMIE ET DES FINANCES</item>
+        <item>MINISTERE DE L\'EDUCATION NATIONALE</item>
+        <item>MINISTERE DE L\'ENERGIE,ET DES MINES</item>
+        <item>MINISTERE DE L\'ENSEIGNEMENT SUPERIE</item>
+        <item>MINISTERE DE L\'EQUIPEMENT DU TRANSPORT ET DE LA LOGISTIQUE</item>
+        <item>MINISTERE DE L\'HABITAT</item>
+        <item>MINISTERE DE L\'INDUSTRIE</item>
+        <item>MINISTERE DE L\'INTERIEUR</item>
+        <item>MINISTERE DE L\'INTERIEUR</item>
+        <item>MINISTERE DE TRANSPORT</item>
+        <item>MINISTERE DELEGUE AUPRES DU CHEF DE GOUVERNEMENT CHARGE DES AFFAIRES GENERALES ET DE LA GOUVERNANCE</item>
+        <item>MINISTERE DELEGUE AUPRES DU CHEF DU</item>
+        <item>MINISTERE DES HABOUS</item>
+        <item>MINISTERE DU COMMERCE</item>
+        <item>MINISTERE DU TOURISME</item>
+        <item>MINISTERE PRIMATURE</item>
+        <item>MKARREM</item>
+        <item>MOBILI CONCEPT (MME ENNMER)</item>
+        <item>MOBIZ-MASTERNAUT MAROC</item>
+        <item>MODERNE ASSURANCE</item>
+        <item>Mohammed Amine Expert Topograp</item>
+        <item>MONDELEZ MAROC</item>
+        <item>MOROCCAN CERTIFICATION CENTER</item>
+        <item>MORPHO MAROC GROUPE SAFRAN</item>
+        <item>MOULINE JAMILA</item>
+        <item>M\'TALSSI ASSURANCE</item>
+        <item>MULTICOLLES-MULTIPROBAT</item>
+        <item>MUNISYS</item>
+        <item>MUNISYS AZ</item>
+        <item>MUNISYS RABAT</item>
+        <item>MUNISYS SERVICE TECHNIQUE</item>
+        <item>NAPS</item>
+        <item>NAREVA HOLDING</item>
+        <item>NASUBA TECHNOLOGIES</item>
+        <item>NEMOTEK TECHNOLOGIE</item>
+        <item>NEODIS</item>
+        <item>NESTLE MAROC</item>
+        <item>NET-SKILLS</item>
+        <item>NEXUS TECHNOLOGY</item>
+        <item>NICE GARMENT</item>
+        <item>NOKIA</item>
+        <item>NOKIA SIEMENS NETWORK</item>
+        <item>NOKIA SIEMENS NETWORKS AGDAL</item>
+        <item>NOVARTIS</item>
+        <item>NOVOTEL CASA CITY CENTER</item>
+        <item>OCP BEN GUERIR</item>
+        <item>OCP JORF LASFAR</item>
+        <item>OCP KHOURIBGA</item>
+        <item>OCP SAFI</item>
+        <item>OCP YOUSSOUFIA</item>
+        <item>OFFICE CHERIFIEN DES PHOSPHATES</item>
+        <item>OFFICE DES CHANGES</item>
+        <item>OFFICE NATIONAL DE L\'ELECTRICITE</item>
+        <item>OFFICE NATIONAL DES AEROPORTS</item>
+        <item>Office National Des Chemins De Fer</item>
+        <item>OFFICE NATIONAL DES PECHES</item>
+        <item>OIKOS</item>
+        <item>OMNIDATA</item>
+        <item>OMPIC</item>
+        <item>ONA</item>
+        <item>ONCF</item>
+        <item>ONEE</item>
+        <item>ONHYM</item>
+        <item>ONICL</item>
+        <item>ONUDI</item>
+        <item>ORMVAG</item>
+        <item>OTEO S.A</item>
+        <item>OUADIE ASSURANCES</item>
+        <item>OUDGHIRI</item>
+        <item>oulmes</item>
+        <item>OUMAHJOUB KHALID</item>
+        <item>OXYLIOM</item>
+        <item>P.N.U.D</item>
+        <item>PAKISTAN MAROC PHOSPHORE</item>
+        <item>PATRIVAS</item>
+        <item>PAYMENT CENTER FOR AFRICA</item>
+        <item>PERCALL DEVELOPPEMENT</item>
+        <item>PERNOD RICARD MAROC</item>
+        <item>PETROFIB SA</item>
+        <item>PETROMIN-OILS DU MAROC</item>
+        <item>PHARMACIE BAB SALMIA</item>
+        <item>PHENIXA</item>
+        <item>PHILIP MORRIS MAROC</item>
+        <item>PHONE ACADEMY</item>
+        <item>PHONE ASSISTANCE</item>
+        <item>PHONE ONLINE</item>
+        <item>PHONE SERVIPLUS</item>
+        <item>PHOSBOUCRAA</item>
+        <item>POLYMEDIC</item>
+        <item>POWEREX MOROCCO</item>
+        <item>PRECIA MOLEN</item>
+        <item>PREMIUM SENEGAL</item>
+        <item>PREMIUM SHORE</item>
+        <item>PRESTIGE INFORMATIQUE</item>
+        <item>PROCHECK</item>
+        <item>PRODEC</item>
+        <item>PROJET DE MODERNISATION DE L\'ADMINISTRATION FISCALE (PROMAF</item>
+        <item>PYXICOM</item>
+        <item>R.A.D.E.E.J</item>
+        <item>RADEEF</item>
+        <item>RADEEMA</item>
+        <item>RADEM</item>
+        <item>RADIOUI YOUSSEF</item>
+        <item>RAK KENITRA</item>
+        <item>RAMI BRAHIM</item>
+        <item>REDAL</item>
+        <item>REGIE AUTONOME DE DISTRIBUTION D\'EAU ET D\'ELECTRICITE DE LA CHAOUIA</item>
+        <item>REGIME COLLECTIF D\'ALLOCATION DE RETRAITE (GROUPE CDG)</item>
+        <item>RENAULT MAROC</item>
+        <item>RENAULT MAROC SERVICE</item>
+        <item>RENAULT TANGER EXPLOITATION</item>
+        <item>RENAULT TANGER MEDITERRANEE</item>
+        <item>RENAULT TRUCKS MAROC</item>
+        <item>REPARATION NAVALE DU SUD</item>
+        <item>RHARIB ABDELLATIF</item>
+        <item>RHOUFRANI MALIKA</item>
+        <item>RIAD ASSURANCE</item>
+        <item>RISMA  S.A</item>
+        <item>RMA-ROYALE MAROCAINE D\'ASSURANCE</item>
+        <item>ROYAL AIR MAROC</item>
+        <item>ROYAL GOLF ESSALAM</item>
+        <item>ROYAL NAUTIQUE CLUB DU</item>
+        <item>S2M</item>
+        <item>SABER FATIMA ZAHRA</item>
+        <item>SADKI MERIEM</item>
+        <item>SAFED</item>
+        <item>SAFRAN MORPHO</item>
+        <item>SAGE SOFTWARE</item>
+        <item>SAGEM SECURITE</item>
+        <item>SAGEM SECURITE MAROC</item>
+        <item>SAGMA</item>
+        <item>SAHAM ASSISTANCE</item>
+        <item>SAHAM ASSURANCE</item>
+        <item>SAHAM PHARMA</item>
+        <item>SALAF AL MOSTAKBAL</item>
+        <item>SALAMA ABDELLATIF</item>
+        <item>SAMSUNG C&amp;T</item>
+        <item>SANOFI AVENTIS</item>
+        <item>SCAMA</item>
+        <item>SECRETARIAT D\'ETAT CHARGE DE L\'EAU</item>
+        <item>SECURANCE ASSURANCE</item>
+        <item>SEKKAT (DG)</item>
+        <item>SERHANE KHADIJA</item>
+        <item>SG ATS</item>
+        <item>SGAM MAROC</item>
+        <item>SGMB</item>
+        <item>SHELL MOROCCO</item>
+        <item>SIMULATOR ONLINE</item>
+        <item>SINAM</item>
+        <item>SITA</item>
+        <item>SITA INC BV</item>
+        <item>SIVSA SOLUCIONES INFORMATICAS (SUCC)</item>
+        <item>SMILE MAROC</item>
+        <item>SOBERMA</item>
+        <item>SOCEDIM</item>
+        <item>SOCIETE AGRICOLE MIMONA</item>
+        <item>SOCIETE CENTRALE REASSURANCES</item>
+        <item>SOCIETE MAROCAINE DES TABACS</item>
+        <item>SOCIETE MAROCAINE DES VOITURES NIPPONES (SMVN)</item>
+        <item>SOCIETE NATIONALE DES TRANSPORTS ET DE LA LOGISTIQUE</item>
+        <item>SOCIETE NATIONALE D\'INVESTISSEMENT</item>
+        <item>SOCOPIM</item>
+        <item>SOFAC</item>
+        <item>SOFINAS</item>
+        <item>SOFITEL MOGADOR ESSAOUIRA</item>
+        <item>SOGECAPITAL</item>
+        <item>SOGELEASE</item>
+        <item>SOMATHES</item>
+        <item>SOMEI</item>
+        <item>SOMMA</item>
+        <item>SONACAR</item>
+        <item>SOPRA STERIA</item>
+        <item>SOREC</item>
+        <item>SOREC</item>
+        <item>SOTREG</item>
+        <item>SPLUS</item>
+        <item>SRM</item>
+        <item>ST ERICSSON</item>
+        <item>STAREO</item>
+        <item>STE MAROCAINE DE CONSTRUCTION AUTO</item>
+        <item>STERIA</item>
+        <item>STERIA MEDSHORE</item>
+        <item>STMICROELECTRONICS  SAS (MAROC)</item>
+        <item>STVA</item>
+        <item>SUNABEL</item>
+        <item>SWISSPORT MAROC</item>
+        <item>SYCOMP</item>
+        <item>SYNGENTA MAROC</item>
+        <item>TAGHY ZAKARIA</item>
+        <item>TANGER ASSURANCES CONSEIL</item>
+        <item>TANGER MED II</item>
+        <item>TANGER MED PORT AUTHORITY</item>
+        <item>TECHNIPLUS</item>
+        <item>TECHNOMARK</item>
+        <item>TECHNORIUM</item>
+        <item>TELIO MAROC</item>
+        <item>TMSA TANGER MED</item>
+        <item>TOTAL ASSURANCES</item>
+        <item>TRACTAFRIC *STOKVIS*</item>
+        <item>TRACTAFRIC EQUIPEMENT AFRICA</item>
+        <item>TRACTAFRIC MOTORS AFRICA</item>
+        <item>TRESORERIE GENERALE DU ROYAUME</item>
+        <item>TRIA GROUP</item>
+        <item>UAE EXCHANGE MOROCCO</item>
+        <item>UFP MAROC</item>
+        <item>ULTRANET</item>
+        <item>UNICONFORT MAROC DOLIDOL</item>
+        <item>UNIDEL</item>
+        <item>UNILEVER MAGHREB</item>
+        <item>UNION MAGHREB ARABE</item>
+        <item>UNION SPORTIVE DES CHEMINOTS</item>
+        <item>UNISYS WORLD TRADE</item>
+        <item>UNITE DE TRAITEMENT DU RENSEIGNEMEN</item>
+        <item>UNIVERSITE ABDELMALEK ESSAADI</item>
+        <item>UNIVERSITE HASSAN II</item>
+        <item>UNIVERSITE HASSAN II - MOHAM</item>
+        <item>UNIVERSITE IBN TOFAIL</item>
+        <item>UNIVERSITE IBN ZOHR</item>
+        <item>UNIVERSITE MOHAMED V</item>
+        <item>UNIVERSITE MOULAY ISMAIL</item>
+        <item>UNIVERSITE SIDI MOHAMED BEN ABDELAH</item>
+        <item>UPLINE CORPORATE FINANCE</item>
+        <item>UPLINE COURTAGE</item>
+        <item>UPLINE GROUP</item>
+        <item>UPLINE INVESTMENTS</item>
+        <item>UPLINE SECURITIES CASA</item>
+        <item>VARUN BEVERAGES MORROC SA</item>
+        <item>VENTEC MAROC</item>
+        <item>VEOLIA SERVICES</item>
+        <item>VILLASSUR</item>
+        <item>VIVALIS</item>
+        <item>VIVO ENERGY MAROC</item>
+        <item>WAFA ASSURANCES</item>
+        <item>WAFA IMMOBILIER</item>
+        <item>WAFA LLD</item>
+        <item>WAFA MONETIQUE</item>
+        <item>WAFA SALAF</item>
+        <item>WAFA SAMAK</item>
+        <item>WAFABAIL</item>
+        <item>WAFABOURSE</item>
+        <item>WAFACASH</item>
+        <item>WAFAE EL BOUZKRAOUI</item>
+        <item>WANA CORPORATE (INWI)</item>
+        <item>WATANIYA TELECOM ALGERIE SPA</item>
+        <item>WEBHELP MAROC</item>
+        <item>WESTCON GROUP</item>
+        <item>WINXO</item>
+        <item>WISE COMMUNICATION COMPANY</item>
+        <item>YACOUBI NAIMA</item>
+        <item>YOUNES PETER AMINE</item>
+        <item>ZNIBER FARID</item>
+        <item>ZNIBER KHALID</item>
+        <item>ZURICH ASSURANCES MAROC</item>
+    </string-array>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_liste_activiter">ListeActiviterActivity</string>
+
+
+</resources>
