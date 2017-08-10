@@ -10,8 +10,8 @@ import java.util.Date;
 public class ActiviterEmployer implements Serializable {
 
     private int id;
-    private String date;
-    private String dateSortie;
+    private String dateDebut;
+    private String dateFin;
     private String heureDebut;
     private String heureFin;
     private String client;
@@ -21,17 +21,17 @@ public class ActiviterEmployer implements Serializable {
     private String ville;
     private String duree;
     private int tag;
-    private String employer;
+    private String emailEmployer;
 
     public ActiviterEmployer() {
     }
 
-    public ActiviterEmployer(int id,String employer,String date, String dateSortie, String heureDebut, String heureFin,String duree, String client,
+    public ActiviterEmployer(int id,String emailEmployer,String date, String dateSortie, String heureDebut, String heureFin,String duree, String client,
                              String nature, String descProjet, String lieu, String ville,int tag) {
         this.id = id;
-        this.employer = employer;
-        this.date = date;
-        this.dateSortie = dateSortie;
+        this.emailEmployer = emailEmployer;
+        this.dateDebut = date;
+        this.dateFin = dateSortie;
         this.heureDebut = heureDebut;
         this.heureFin = heureFin;
         this.client = client;
@@ -43,11 +43,11 @@ public class ActiviterEmployer implements Serializable {
         this.tag = tag;
     }
 
-    public ActiviterEmployer(String employer,String date, String dateSortie, String heureDebut, String duree, String heureFin, String client,
+    public ActiviterEmployer(String emailEmployer,String date, String dateSortie, String heureDebut, String duree, String heureFin, String client,
                              String nature, String descProjet, String lieu, String ville) {
-        this.employer = employer;
-        this.date = date;
-        this.dateSortie = dateSortie;
+        this.emailEmployer = emailEmployer;
+        this.dateDebut = date;
+        this.dateFin = dateSortie;
         this.heureDebut = heureDebut;
         this.heureFin = heureFin;
         this.client = client;
@@ -67,20 +67,20 @@ public class ActiviterEmployer implements Serializable {
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateDebut() {
+        return dateDebut;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateDebut(String dateDebut) {
+        this.dateDebut = dateDebut;
     }
 
-    public String getDateSortie() {
-        return dateSortie;
+    public String getDateFin() {
+        return dateFin;
     }
 
-    public void setDateSortie(String dateSortie) {
-        this.dateSortie = dateSortie;
+    public void setDateFin(String dateFin) {
+        this.dateFin = dateFin;
     }
 
     public String getHeureDebut() {
@@ -155,21 +155,20 @@ public class ActiviterEmployer implements Serializable {
         this.tag = tag;
     }
 
-    public String getEmployer() {
-        return employer;
+    public String getEmailEmployer() {
+        return emailEmployer;
     }
 
-    public void setEmployer(String employer) {
-        this.employer = employer;
+    public void setEmailEmployer(String emailEmployer) {
+        this.emailEmployer = emailEmployer;
     }
 
     @Override
     public String toString() {
         return "ActiviterEmployer{" +
                 "id=" + id +
-                "employer=" + employer +
-                ", date='" + date + '\'' +
-                ", dateSortie='" + dateSortie + '\'' +
+                ", dateDebut='" + dateDebut + '\'' +
+                ", dateFin='" + dateFin + '\'' +
                 ", heureDebut='" + heureDebut + '\'' +
                 ", heureFin='" + heureFin + '\'' +
                 ", client='" + client + '\'' +
@@ -177,7 +176,9 @@ public class ActiviterEmployer implements Serializable {
                 ", descProjet='" + descProjet + '\'' +
                 ", lieu='" + lieu + '\'' +
                 ", ville='" + ville + '\'' +
-                ", tag='" + tag + '\'' +
+                ", duree='" + duree + '\'' +
+                ", tag=" + tag +
+                ", emailEmployer='" + emailEmployer + '\'' +
                 '}';
     }
 }

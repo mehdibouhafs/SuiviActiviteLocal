@@ -58,7 +58,7 @@ public class AdaptorForActiviter extends RecyclerView.Adapter<AdaptorForActivite
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final ActiviterEmployer activiterEmployer = list_don_filtred.get(position);
 
-        holder.dateDebut.setText(activiterEmployer.getDate().split("\\s+")[0]);
+        holder.dateDebut.setText(activiterEmployer.getDateDebut().split("\\s+")[0]);
         holder.heureDebut.setText(activiterEmployer.getHeureDebut());
         holder.heureFin.setText(activiterEmployer.getHeureFin());
         holder.duree.setText(activiterEmployer.getDuree());
@@ -101,7 +101,7 @@ public class AdaptorForActiviter extends RecyclerView.Adapter<AdaptorForActivite
 
                 for (ActiviterEmployer activiterEmployer : list_don) {
 
-                    if (activiterEmployer.getDate().toLowerCase().contains(charString) || activiterEmployer.getClient().toLowerCase().contains(charString) ||activiterEmployer.getNature().toLowerCase().contains(charString) || activiterEmployer.getDescProjet().toLowerCase().contains(charString) || activiterEmployer.getLieu().toLowerCase().contains(charString)
+                    if (activiterEmployer.getDateDebut().toLowerCase().contains(charString) || activiterEmployer.getClient().toLowerCase().contains(charString) ||activiterEmployer.getNature().toLowerCase().contains(charString) || activiterEmployer.getDescProjet().toLowerCase().contains(charString) || activiterEmployer.getLieu().toLowerCase().contains(charString)
                             || activiterEmployer.getVille().toLowerCase().contains(charString)){
 
                         filteredList.add(activiterEmployer);

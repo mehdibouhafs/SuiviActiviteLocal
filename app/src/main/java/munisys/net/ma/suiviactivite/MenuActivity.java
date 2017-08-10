@@ -1,5 +1,8 @@
 package munisys.net.ma.suiviactivite;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +25,9 @@ import munisys.net.ma.suiviactivite.entities.Session;
 
 public class MenuActivity extends AppCompatActivity {
 
+
+
+
     Button creer,lister;
     CardView cardCreer,cardLister;
     private DrawerLayout drawerLayout;
@@ -32,9 +38,6 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
-
-
 
         init();
         creer.setOnClickListener(new View.OnClickListener() {
@@ -68,8 +71,6 @@ public class MenuActivity extends AppCompatActivity {
 
 
     }
-
-
 
     public void creer(){
         Intent  intent = new Intent(MenuActivity.this,MainActivity.class);

@@ -1,8 +1,11 @@
 package munisys.net.ma.suiviactivite;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -44,6 +47,7 @@ import javax.mail.Transport;
 import munisys.net.ma.suiviactivite.adaptor.AdaptorForActiviter;
 import munisys.net.ma.suiviactivite.dao.Db_gest;
 import munisys.net.ma.suiviactivite.entities.ActiviterEmployer;
+import munisys.net.ma.suiviactivite.entities.NetworkStateChecker;
 import munisys.net.ma.suiviactivite.entities.Session;
 import munisys.net.ma.suiviactivite.mail.Mail;
 
@@ -58,10 +62,27 @@ public class ListeActiviterActivity extends AppCompatActivity {
     private Session session;
     private boolean generate;
 
+    //1 means data is synced and 0 means data is not synced
+    public static final int ACTIVITER_SYNCED_WITH_SERVER = 1;
+    public static final int ACTIVITER_NOT_SYNCED_WITH_SERVER = 0;
+
+    //a broadcast to know weather the data is synced or not
+    public static final String DATA_SAVED_BROADCAST = "munisys.net.ma.datasaved";
+
+    //Broadcast receiver to know the sync status
+    private BroadcastReceiver broadcastReceiver;
+    private NetworkStateChecker networkStateChecker;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_activiter);
+
+        networkStateChecker  = new NetworkStateChecker();
+        registerReceiver(networkStateChecker, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -76,18 +97,30 @@ public class ListeActiviterActivity extends AppCompatActivity {
         });
 
 
-        db = new Db_gest(this,5);
-        activiterEmployers = db.getALLActivity();
+        db = new Db_gest(this);
 
+
+
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                //loading the names again
+                Toast.makeText(context,"On receive load",Toast.LENGTH_LONG).show();
+                loadActivitesEmployer();
+            }
+
+        };
+        registerReceiver(broadcastReceiver, new IntentFilter(DATA_SAVED_BROADCAST));
+
+        activiterEmployers = db.getALLActivity();
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adaptorForActiviter = new AdaptorForActiviter(activiterEmployers,ListeActiviterActivity.this);
-        recyclerView.setAdapter(adaptorForActiviter);
         session = new Session(ListeActiviterActivity.this);
-
-
+        //calling the method to load all the stored names
+        loadActivitesEmployer();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +128,19 @@ public class ListeActiviterActivity extends AppCompatActivity {
                creer();
             }
         });
+    }
+
+    public void loadActivitesEmployer(){
+        activiterEmployers.clear();
+        activiterEmployers = db.getALLActivity();
+        adaptorForActiviter = new AdaptorForActiviter(activiterEmployers,ListeActiviterActivity.this);
+        adaptorForActiviter.setList_don_filtred(activiterEmployers);
+        recyclerView.setAdapter(adaptorForActiviter);
+        adaptorForActiviter.notifyDataSetChanged();
+    }
+
+    private void refreshList() {
+        adaptorForActiviter.notifyDataSetChanged();
     }
 
     public void creer(){
@@ -124,8 +170,6 @@ public class ListeActiviterActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.send:
                 Toast.makeText(ListeActiviterActivity.this,"Send Mail",Toast.LENGTH_SHORT).show();
-                GenerateExcel generateExcel = new GenerateExcel();
-                generateExcel.execute();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -146,150 +190,7 @@ public class ListeActiviterActivity extends AppCompatActivity {
         });
     }
 
-    private boolean saveExcelFile() {
 
-        // check if available and not read only
-        if (!isExternalStorageAvailable() || isExternalStorageReadOnly()) {
-            Log.e(TAG, "Storage not available or read only");
-            return false;
-        }
-
-        boolean success = false;
-
-        //New Workbook
-        Workbook wb = new HSSFWorkbook();
-
-        Cell c = null;
-
-        //Cell style for header row
-        CellStyle cs = wb.createCellStyle();
-        cs.setFillForegroundColor(HSSFColor.LIME.index);
-        cs.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
-
-        //New Sheet
-        Sheet sheet1 = null;
-        sheet1 = wb.createSheet("interventions");
-
-        // Generate column headings
-        Row row = sheet1.createRow(0);
-
-        c = row.createCell(0);
-        c.setCellValue("Date Debut");
-        c.setCellStyle(cs);
-
-        c = row.createCell(1);
-        c.setCellValue("Date Fin");
-        c.setCellStyle(cs);
-
-        c = row.createCell(2);
-        c.setCellValue("Heure Debut");
-        c.setCellStyle(cs);
-
-        c = row.createCell(3);
-        c.setCellValue("Heure Fin");
-        c.setCellStyle(cs);
-
-        c = row.createCell(4);
-        c.setCellValue("Durée");
-        c.setCellStyle(cs);
-
-
-        c = row.createCell(5);
-        c.setCellValue("Employer");
-        c.setCellStyle(cs);
-
-        c = row.createCell(6);
-        c.setCellValue("Client");
-        c.setCellStyle(cs);
-
-        c = row.createCell(7);
-        c.setCellValue("Nature de l'intervention");
-        c.setCellStyle(cs);
-
-        c = row.createCell(8);
-        c.setCellValue("Description projet / Comm.Action");
-        c.setCellStyle(cs);
-
-        c = row.createCell(9);
-        c.setCellValue("Lieu");
-        c.setCellStyle(cs);
-
-        c = row.createCell(10);
-        c.setCellValue("Ville");
-        c.setCellStyle(cs);
-
-        sheet1.setColumnWidth(0, (15 * 500));
-        sheet1.setColumnWidth(1, (15 * 500));
-        sheet1.setColumnWidth(2, (15 * 500));
-        sheet1.setColumnWidth(3, (15 * 500));
-        sheet1.setColumnWidth(4, (15 * 500));
-        sheet1.setColumnWidth(5, (15 * 500));
-        sheet1.setColumnWidth(6, (15 * 500));
-        sheet1.setColumnWidth(7, (15 * 500));
-        sheet1.setColumnWidth(8, (15 * 500));
-        sheet1.setColumnWidth(9, (15 * 500));
-        sheet1.setColumnWidth(10, (15 * 500));
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String fileName1 = session.getNameUser()+"_"+timeStamp+".xls";
-        fileName = fileName1;
-        ArrayList<ActiviterEmployer> activiterEmployers = db.getALLActivityByTag(0);
-        int i=1;
-        for(ActiviterEmployer activiterEmployer:activiterEmployers){
-            Row row1 = sheet1.createRow(i);
-            db.majActivityEmployer(activiterEmployer.getId(),1);
-            c = row1.createCell(0);
-            c.setCellValue(activiterEmployer.getDate());
-            c = row1.createCell(1);
-            c.setCellValue(activiterEmployer.getDateSortie());
-            c = row1.createCell(2);
-            c.setCellValue(activiterEmployer.getHeureDebut());
-            c = row1.createCell(3);
-            c.setCellValue(activiterEmployer.getHeureFin());
-            c = row1.createCell(4);
-            c.setCellValue(activiterEmployer.getDuree());
-            c = row1.createCell(5);
-            c.setCellValue(activiterEmployer.getEmployer());
-            c = row1.createCell(6);
-            c.setCellValue(activiterEmployer.getClient());
-            c = row1.createCell(7);
-            c.setCellValue(activiterEmployer.getNature());
-            c = row1.createCell(8);
-            c.setCellValue(activiterEmployer.getDescProjet());
-            c = row1.createCell(9);
-            c.setCellValue(activiterEmployer.getLieu());
-            c = row1.createCell(10);
-            c.setCellValue(activiterEmployer.getVille());
-            i++;
-        }
-
-
-        // Create a path where we will place our List of objects on external storage
-        File file = new File(this.getExternalFilesDir(null), fileName1);
-        //ContextWrapper cw = new ContextWrapper(context);
-        //File directory = cw.getDir("files", Context.MODE_PRIVATE);
-        //file=new File(directory,fileName);
-        //Log.e("filepath",file.getPath());
-        FileOutputStream os = null;
-
-        try {
-            os = new FileOutputStream(file);
-            wb.write(os);
-            Log.w("FileUtils", "Writing file" + file);
-            success = true;
-        } catch (IOException e) {
-            Log.w("FileUtils", "Error writing " + file, e);
-        } catch (Exception e) {
-            Log.w("FileUtils", "Failed to save file", e);
-        } finally {
-            try {
-                if (null != os)
-                    os.close();
-            } catch (Exception ex) {
-            }
-        }
-        return success;
-    }
 
     public static boolean isExternalStorageReadOnly() {
         String extStorageState = Environment.getExternalStorageState();
@@ -307,37 +208,6 @@ public class ListeActiviterActivity extends AppCompatActivity {
         return false;
     }
 
-    public class GenerateExcel extends AsyncTask<Void, Void, Boolean>
-    {
-
-        private ProgressDialog progressDialog;
-
-        @Override
-        protected void onPreExecute()
-        {
-            super.onPreExecute();
-            progressDialog = ProgressDialog.show(ListeActiviterActivity.this, "Veuillez patienter", "Fichier en cours de génération...", true, false);
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            return saveExcelFile();
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            progressDialog.dismiss();
-            if (aBoolean){
-                adaptorForActiviter.setList_don_filtred(db.getALLActivity());
-                adaptorForActiviter.notifyDataSetChanged();
-                SendMailTask sendMailTask = new SendMailTask();
-                sendMailTask.execute();
-            }else{
-                generate = false;
-            }
-        }
-    }
 
     public class SendMailTask extends AsyncTask<Void, Void, Void>
     {
@@ -371,5 +241,10 @@ public class ListeActiviterActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
+        unregisterReceiver(networkStateChecker);
+    }
 }

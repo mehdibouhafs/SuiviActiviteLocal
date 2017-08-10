@@ -1,6 +1,7 @@
 package munisys.net.ma.suiviactivite;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -24,6 +25,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -40,16 +52,21 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.joda.time.DateTime;
 import org.joda.time.Hours;
 import org.joda.time.Minutes;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -58,11 +75,20 @@ import javax.mail.Transport;
 import munisys.net.ma.suiviactivite.dao.Db_gest;
 import munisys.net.ma.suiviactivite.entities.ActiviterEmployer;
 import munisys.net.ma.suiviactivite.entities.Session;
+import munisys.net.ma.suiviactivite.entities.VolleySingleton;
 import munisys.net.ma.suiviactivite.mail.Mail;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private final static String TAG ="MainActivity";
+    public final static String URL_SAVE_ACTIVITER_EMPLOYER = "http://192.168.43.110:8080/ActivitesEmployer";
+    public final static String URL_GET_ACTIVITER_EMPLOYER = "http://192.168.43.110:8080/ActivitesEmployer";
+    public final static String URL_GET_CLIENTS = "http://192.168.43.110:8080/clients";
+    public final static String URL_GET_NATURES = "http://192.168.43.110:8080/natures";
+    public final static String URL_GET_USER = "http://192.168.43.110:8080/users";
+    public final static String URL_GET_DBVERSION = "http://192.168.43.110:8080/db";
 
+    public final static int  ACTIVITER_SYNCED_WITH_SERVER = 1;
+    public final static int  ACTIVITER_UNSYNCED_WITH_SERVER = 0;
     private DatePickerDialog dpd;
     private TimePickerDialog tpd1,tpd2;
     private EditText date,heureDebut,heureFin,descProjet;
@@ -73,24 +99,21 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView dure;
     private LinearLayout duree;
     private String duree2;
-
     String[] natures;
     String[] lieux;
     String[] clients;
     String[] villes;
-
     private ActiviterEmployer activiterEmployer;
-
     private int heureDebut1,heureFin1;
     private int minuteDebut1,minuteFin1;
     private LinearLayout layoutsHeureFin;
     private String natureSelected,lieuSelected,clientSelected,villeSelected;
-
     private Db_gest db;
     private File file;
     private Session session;
     private String dateFin;
     private Boolean supDay=false;
+
 
 
     @Override
@@ -119,58 +142,53 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                submitForm();
-                if(supDay) {
-                    DateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-                    //Date startDate = sdf.parse(date.getText().toString());
-                    Calendar c = Calendar.getInstance();
-                    try {
-                        c.setTime(sdf.parse(date.getText().toString()));
-                        c.add(Calendar.DATE, 1);  // number of days to add
-                        dateFin = sdf.format(c.getTime());
-                        Log.e("DateFin", dateFin);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
+                if(submitForm()) {
+                    if (supDay) {
+                        DateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+                        //Date startDate = sdf.parse(date.getText().toString());
+                        Calendar c = Calendar.getInstance();
+                        try {
+                            c.setTime(sdf.parse(date.getText().toString()));
+                            c.add(Calendar.DATE, 1);  // number of days to add
+                            dateFin = sdf.format(c.getTime());
+                            Log.e("DateFin", dateFin);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        dateFin = date.getText().toString();
                     }
+                    activiterEmployer = new ActiviterEmployer();
+                    String dateDebutDatetime = date.getText().toString() + " " + heureDebut.getText().toString() + ":00";
+                    String dateFinDatetime = dateFin.toString() + " " + heureFin.getText().toString() + ":00";
+                    Log.e("dateDebutDatetime", dateDebutDatetime);
+                    activiterEmployer.setDateDebut(dateDebutDatetime);
+                    activiterEmployer.setDateFin(dateFinDatetime);
+                    activiterEmployer.setHeureDebut(heureDebut.getText().toString());
+                    activiterEmployer.setHeureFin(heureFin.getText().toString());
+                    activiterEmployer.setDuree(duree2);
+                    activiterEmployer.setNature(natureSelected);
+                    activiterEmployer.setDescProjet(descProjet.getText().toString());
+                    activiterEmployer.setLieu(lieuSelected);
+                    activiterEmployer.setVille(villeSelected);
+                    activiterEmployer.setClient(clientSelected);
+                    activiterEmployer.setEmailEmployer(session.getEmail());
 
-                }else{
-                    dateFin = date.getText().toString();
+                    Log.e("activiteEmployer", activiterEmployer.toString());
+
+                    saveActiviterEmployerServer(activiterEmployer);
                 }
-                activiterEmployer = new ActiviterEmployer();
-                String dateDebutDatetime = date.getText().toString() + " "+heureDebut.getText().toString()+":00";
-                String dateFinDatetime = dateFin.toString() + " "+heureFin.getText().toString()+":00";
-                Log.e("dateDebutDatetime",dateDebutDatetime);
-                activiterEmployer.setDate(dateDebutDatetime);
-                activiterEmployer.setDateSortie(dateFinDatetime);
-                activiterEmployer.setHeureDebut(heureDebut.getText().toString());
-                activiterEmployer.setHeureFin(heureFin.getText().toString());
-                activiterEmployer.setDuree(duree2);
-                activiterEmployer.setNature(natureSelected);
-                activiterEmployer.setDescProjet(descProjet.getText().toString());
-                activiterEmployer.setLieu(lieuSelected);
-                activiterEmployer.setVille(villeSelected);
-                activiterEmployer.setClient(clientSelected);
 
-                Log.e("activiteEmployer",activiterEmployer.toString());
 
-                if(db.insererActivityEmployer(session.getNameUser(),activiterEmployer.getDate(),activiterEmployer.getDateSortie(),activiterEmployer.getHeureDebut(),
-                        activiterEmployer.getHeureFin(),activiterEmployer.getDuree(),activiterEmployer.getClient(),activiterEmployer.getNature(),
-                        activiterEmployer.getDescProjet(),activiterEmployer.getLieu(),activiterEmployer.getVille())== true){
-                    Toast.makeText(MainActivity.this,"Inserer avec succès",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(MainActivity.this,ListeActiviterActivity.class);
-                    startActivity(intent);
-
-                }else{
-                    Toast.makeText(MainActivity.this,"Error insertion",Toast.LENGTH_LONG).show();
-                }
 
             }
         });
 
 
+
+
     }
-
-
 
 
     @Override
@@ -218,7 +236,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         clients = getResources().getStringArray(R.array.clients);
         villes  = getResources().getStringArray(R.array.villes);
         layoutsHeureFin  = (LinearLayout) findViewById(R.id.layoutsHeureFin);
-        db = new Db_gest(this,5);
+        db = new Db_gest(this);
 
 
         final Calendar now = Calendar.getInstance();
@@ -455,38 +473,42 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
 
 
-    private void submitForm() {
+    private boolean submitForm() {
         if (!validateDate()) {
-            return;
+            return false;
         }
 
         if (!validateHeureDebut()) {
-            return;
+            return false;
         }
 
         if (!validateHeureFin()) {
-            return;
+            return false;
         }
 
 
         if (!validateClient()) {
-            return;
+            return false;
         }
         if (!validateNature()) {
-            return;
+            return false;
         }
 
         if (!validateDescProjet()) {
-            return;
+            return false;
         }
 
         if (!validateLieu()) {
-            return;
+            return false;
         }
 
         if (!validateVille()) {
-            return;
+            return false;
         }
+
+
+        Toast.makeText(MainActivity.this,"SubmitedForm",Toast.LENGTH_SHORT).show();
+        return true;
 
     }
 
@@ -589,27 +611,14 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private boolean validateVille() {
-       /* if (natureIntervention.ge ==null) {
-
-            requestFocus(client);
+        if(villeSelected.isEmpty()){
+            Toast.makeText(MainActivity.this,"La ville est obligatoire",Toast.LENGTH_SHORT).show();
             return false;
-        } else {
-            //layoutDate.setErrorEnabled(false);
         }
-*/
         return true;
     }
 
-    public void reset(){
-        date.setText("");
-        heureDebut.setText("");
-        heureFin.setText("");
-        client.setSelection(0);
-        natureIntervention.setSelection(0);
-        descProjet.setText("");
-        lieu.setSelection(0);
-        ville.setSelection(0);
-    }
+
 
 
     public boolean isOnline() {
@@ -752,6 +761,80 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         startActivity(new Intent(MainActivity.this,MenuActivity.class));
     }
 
+
+    //saving the name to local storage
+    public boolean saveActiviterToLocalStorage(ActiviterEmployer activiterEmployer, int status) {
+        if(db.insererActivityEmployer(session.getEmail(),activiterEmployer.getDateDebut(),activiterEmployer.getDateFin(),activiterEmployer.getHeureDebut(),
+                activiterEmployer.getHeureFin(),activiterEmployer.getDuree(),activiterEmployer.getClient(),activiterEmployer.getNature(),
+                activiterEmployer.getDescProjet(),activiterEmployer.getLieu(),activiterEmployer.getVille(),status)== true){
+            return true;
+        }
+        return  false;
+
+
+    }
+
+    private void saveActiviterEmployerServer(final ActiviterEmployer activiterEmployer) {
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Sauvegarde de votre activiter...");
+        progressDialog.show();
+        HashMap<String, String> params = new HashMap<String, String>();
+
+        JSONObject jsonObject = null;
+
+
+        try {
+            params.put("dateDebut", activiterEmployer.getDateDebut());
+            params.put("dateFin", activiterEmployer.getDateFin());
+            params.put("heureDebut", activiterEmployer.getHeureDebut());
+            params.put("heureFin", activiterEmployer.getHeureFin());
+            params.put("duree", activiterEmployer.getDuree());
+            params.put("client", activiterEmployer.getClient());
+            params.put("nature", activiterEmployer.getNature());
+            params.put("descProjet", activiterEmployer.getDescProjet());
+            params.put("lieu", activiterEmployer.getLieu());
+            params.put("ville", activiterEmployer.getVille());
+            jsonObject = new JSONObject(params);
+            JSONObject jsonObject2 = new JSONObject();
+            jsonObject2.put("email","a@b.c");
+            jsonObject.put("user",jsonObject2);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        JsonObjectRequest req = new JsonObjectRequest(MainActivity.URL_SAVE_ACTIVITER_EMPLOYER,jsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        progressDialog.dismiss();
+                        try {
+                            if (!response.getString("dateDebut").isEmpty()) {
+                                saveActiviterToLocalStorage(activiterEmployer,MainActivity.ACTIVITER_SYNCED_WITH_SERVER);
+                            }else {
+                                saveActiviterToLocalStorage(activiterEmployer,MainActivity.ACTIVITER_UNSYNCED_WITH_SERVER);
+                            }
+                            Intent intent = new Intent(MainActivity.this,ListeActiviterActivity.class);
+                            startActivity(intent);
+                            Log.e("Response:%n %s", response.toString(4));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                saveActiviterToLocalStorage(activiterEmployer,MainActivity.ACTIVITER_UNSYNCED_WITH_SERVER);
+                Intent intent = new Intent(MainActivity.this,ListeActiviterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        VolleySingleton.getInstance(this).addToRequestQueue(req);
+    }
 
 
 

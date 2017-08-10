@@ -44,7 +44,7 @@ public class SignupActivity extends AppCompatActivity {
         _loginLink = (TextView) findViewById(R.id.link_login);
         user = new User();
 
-        db = new Db_gest(this,5);
+        db = new Db_gest(this);
 
 
         progressDialog = new ProgressDialog(SignupActivity.this,

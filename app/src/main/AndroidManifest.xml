@@ -3,6 +3,13 @@
     package="munisys.net.ma.suiviactivite">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.AUTHENTICATE_ACCOUNTS"
+        android:maxSdkVersion="22" />
+    <uses-permission
+        android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission
+        android:name="android.permission.READ_SYNC_SETTINGS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -29,6 +36,15 @@
             android:name=".ListeActiviterActivity"
             android:label="@string/title_activity_liste_activiter"
             android:theme="@style/AppTheme.NoActionBar" android:configChanges="orientation|screenSize"></activity>
+
+        <receiver android:name=".entities.NetworkStateChecker">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+
+
     </application>
 
 </manifest>

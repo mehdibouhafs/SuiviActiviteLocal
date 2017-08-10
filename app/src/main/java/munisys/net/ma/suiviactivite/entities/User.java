@@ -1,6 +1,8 @@
 package munisys.net.ma.suiviactivite.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by mehdibouhafs on 12/07/2017.
@@ -12,6 +14,8 @@ public class User  implements Serializable{
     private String name;
     private String email;
     private String password;
+    private Boolean active;
+    private Collection<Role> roles;
 
     public User(int id, String name, String email, String password) {
         this.id = id;
@@ -66,8 +70,31 @@ public class User  implements Serializable{
         this.password = password;
     }
 
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     @Override
     public String toString() {
-        return name;
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", roles=" + roles +
+                '}';
     }
 }

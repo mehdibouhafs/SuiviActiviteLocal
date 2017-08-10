@@ -3,6 +3,7 @@ package munisys.net.ma.suiviactivite;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,11 +13,25 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import munisys.net.ma.suiviactivite.dao.Db_gest;
+import munisys.net.ma.suiviactivite.entities.ServerLoader;
 import munisys.net.ma.suiviactivite.entities.Session;
 import munisys.net.ma.suiviactivite.entities.User;
+import munisys.net.ma.suiviactivite.entities.VolleySingleton;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -28,11 +43,13 @@ public class LoginActivity extends AppCompatActivity {
     private Button _loginButton;
     private Session session;
     private Db_gest db;
-
+    private User user;
+    private ServerLoader serverLoader;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         //ButterKnife.bind(this);
 
         session = new Session(this);
@@ -48,11 +65,9 @@ public class LoginActivity extends AppCompatActivity {
         _loginButton = (Button) findViewById(R.id.btn_login);
         _signupLink = (TextView) findViewById(R.id.link_signup);
 
-        db = new Db_gest(this,5);
-        List<User> users = db.getALLUser();
-        for (User e : users){
-            Log.e("User " , e.toString());
-        }
+        db = new Db_gest(this);
+        serverLoader = new ServerLoader(db,this);
+
         progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme);
 
@@ -129,18 +144,12 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess(String email,String password) {
         _loginButton.setEnabled(true);
-        if(db.getUserBoolean(email,password)){
-            User user = db.getUser(email,password);
-            session.setLoggedIn(true, user);
-            Intent intent = new Intent(this,MenuActivity.class);
-            progressDialog.dismiss();
-            startActivity(intent);
-            finish();
 
-        }else {
-            progressDialog.dismiss();
-            onLoginFailed();
-        }
+        //serverLoader1.checkUser(email, password);
+
+        getUserServer(email,password);
+        //Log.e("user u",u.toString());
+
 
     }
 
@@ -172,4 +181,59 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
+
+
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    public void getUserServer(String email,final String password) {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
+        params.put("password", password);
+
+                JsonObjectRequest req = new JsonObjectRequest(MainActivity.URL_GET_USER,new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            User user1 = new User();
+                            user1.setEmail(response.getString("email"));
+                            user1.setName(response.getString("nom"));
+                            user1.setPassword(password);
+                            user1.setActive(response.getBoolean("active"));
+                            setUser(user1);
+                            if( user1!=null){
+                                db.dropTableUsers();
+                                db.insererUser(user.getName(),user.getEmail(),user.getPassword());
+                                session.setLoggedIn(true, user);
+                                Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
+                                progressDialog.dismiss();
+                                startActivity(intent);
+                                finish();
+
+                            }else {
+                                progressDialog.dismiss();
+                                onLoginFailed();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Error: ", error.getMessage());
+
+            }
+        });
+
+        VolleySingleton.getInstance(this).addToRequestQueue(req);
+
+    }
+
+
 }
